@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ResearchNavigator | Guiding Discovery, Empowering Innovation</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .logo h1 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #1a4b6e, #2c7da0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo .tagline {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #4b6f8c;
+      margin-top: 4px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1f3b4c;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-menu a:hover {
+      color: #2c7da0;
+    }
+
+    /* Buttons */
+    .btn-primary, .btn-secondary, .btn-outline-light {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .btn-primary {
+      background: #2c7da0;
+      color: white;
+      box-shadow: 0 4px 8px rgba(44,125,160,0.2);
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #1f5e7a;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #2c7da0;
+      border: 2px solid #2c7da0;
+    }
+    .btn-secondary:hover {
+      background: #e6f4f9;
+      transform: translateY(-2px);
+    }
+    .btn-outline-light {
+      border: 2px solid white;
+      color: white;
+      background: transparent;
+    }
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(115deg, rgba(10,43,62,0.85) 0%, rgba(10,43,62,0.7) 100%), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center 35%;
+      color: white;
+      padding: 110px 0;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      max-width: 950px;
+      margin: 0 auto 20px;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 36px;
+      opacity: 0.95;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* sections */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #eef2f8;
+    }
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      text-align: center;
+      color: #0b2b3f;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #5d738c;
+      max-width: 720px;
+      margin: 0 auto 48px;
+      font-size: 1.1rem;
+    }
+
+    /* services 4 cols */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 32px 24px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.02);
+      border: 1px solid #eaeff5;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 32px -16px rgba(0,0,0,0.1);
+      border-color: #cfdfea;
+    }
+    .service-icon {
+      font-size: 2.6rem;
+      color: #2c7da0;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .service-card ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .service-card li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-card li i {
+      width: 22px;
+      color: #2c7da0;
+      font-size: 0.9rem;
+    }
+    .learn-more {
+      font-weight: 600;
+      color: #2c7da0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .see-all {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    /* Collaboration Hub */
+    .hub-wrapper {
+      background: #eef3fa;
+      border-radius: 48px;
+      padding: 48px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .hub-features {
+      flex: 2;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 28px;
+    }
+    .hub-item {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .hub-item i {
+      font-size: 2.2rem;
+      color: #2c7da0;
+      margin-bottom: 16px;
+    }
+    .hub-cta-card {
+      flex: 1.2;
+      background: white;
+      border-radius: 32px;
+      padding: 36px 28px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* resources */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 32px;
+    }
+    .resource-card {
+      background: #fbfdff;
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid #eef2f8;
+      transition: 0.2s;
+    }
+    .resource-card h3 i {
+      margin-right: 12px;
+      color: #2c7da0;
+    }
+    .resource-list {
+      margin: 24px 0 16px;
+      padding-left: 20px;
+    }
+    .resource-list li {
+      margin: 10px 0;
+    }
+    .testimonial-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .testimonial {
+      background: #f9fbfe;
+      border-radius: 28px;
+      padding: 32px;
+      max-width: 380px;
+      flex: 1;
+      border-left: 6px solid #2c7da0;
+    }
+    /* contact */
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: #ffffff;
+      border-radius: 40px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      padding: 44px;
+      border: 1px solid #e9edf2;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      border: 1px solid #dce5ec;
+      border-radius: 60px;
+      font-family: inherit;
+      background: #fff;
+      transition: 0.2s;
+    }
+    .contact-form textarea {
+      border-radius: 28px;
+      resize: vertical;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: #2c7da0;
+      box-shadow: 0 0 0 3px rgba(44,125,160,0.1);
+    }
+    .contact-info i {
+      width: 32px;
+      color: #2c7da0;
+    }
+    .social-icons a {
+      font-size: 1.7rem;
+      margin-right: 20px;
+      color: #2c7da0;
+      transition: 0.2s;
+    }
+    footer {
+      background: #0a2b3e;
+      color: #cddfe9;
+      padding: 52px 0 28px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .footer-links a {
+      color: #cfdfe9;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .disclaimer {
+      font-size: 0.75rem;
+      text-align: center;
+      max-width: 850px;
+      margin: 20px auto 0;
+    }
+    @media (max-width: 780px) {
+      .hero h2 { font-size: 2.2rem; }
+      .contact-panel { grid-template-columns: 1fr; padding: 28px; }
+      .hub-wrapper { flex-direction: column; }
+      .section-title { font-size: 1.9rem; }
+      .header-flex { flex-direction: column; text-align: center; }
+      .nav-menu { justify-content: center; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-flex">
+    <div class="logo">
+      <h1>ResearchNavigator.net</h1>
+      <div class="tagline">Guiding Discovery, Empowering Innovation</div>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#collab-hub">Collaboration Hub</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" style="padding:0;">
+    <div class="hero">
+      <div class="container">
+        <h2>Connecting Researchers, Academia, and Industry to Accelerate Innovation</h2>
+        <p>Expert support in research, publishing, grants, and collaboration.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn-primary">Explore Services</a>
+          <a href="#collab-hub" class="btn-outline-light">Join Collaboration Hub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section (4 columns) -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">Tailored expertise for every stakeholder</div>
+      <div class="section-sub">Specialized support for researchers, journals, academia, and industry R&D</div>
+      <div class="services-grid">
+        <!-- Researchers -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-flask"></i></div>
+          <h3>For Researchers</h3>
+          <ul>
+            <li><i class="fas fa-feather-alt"></i> Manuscript Writing & Editing</li>
+            <li><i class="fas fa-file-invoice"></i> Grant Proposal Development</li>
+            <li><i class="fas fa-chart-line"></i> Data Analysis & Visualization</li>
+          </ul>
+          <a href="#" class="learn-more">Learn more →</a>
+        </div>
+        <!-- Journals -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-journal-whills"></i></div>
+          <h3>For Journals</h3>
+          <ul>
+            <li><i class="fas fa-user-check"></i> Peer Review & Editorial Services</li>
+            <li><i class="fas fa-chart-simple"></i> Journal Development Support</li>
+            <li><i class="fas fa-paintbrush"></i> Content Creation & Infographics</li>
+          </ul>
+          <a href="#" class="learn-more">Learn more →</a>
+        </div>
+        <!-- Academia -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-university"></i></div>
+          <h3>For Academia</h3>
+          <ul>
+            <li><i class="fas fa-chalkboard-user"></i> Workshops & Training</li>
+            <li><i class="fas fa-book"></i> Curriculum Development</li>
+            <li><i class="fas fa-handshake"></i> Research Collaboration Facilitation</li>
+          </ul>
+          <a href="#" class="learn-more">Learn more →</a>
+        </div>
+        <!-- Industry -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-industry"></i></div>
+          <h3>For Industry</h3>
+          <ul>
+            <li><i class="fas fa-microchip"></i> R&D Support</li>
+            <li><i class="fas fa-chalkboard"></i> Scientific Consulting</li>
+            <li><i class="fas fa-search"></i> Innovation Scouting</li>
+          </ul>
+          <a href="#" class="learn-more">Learn more →</a>
+        </div>
+      </div>
+      <div class="see-all"><a href="#" class="btn-secondary">See All Services →</a></div>
+    </div>
+  </section>
+
+  <!-- Collaboration Hub -->
+  <section id="collab-hub" style="background: #f8fafd;">
+    <div class="container">
+      <div class="section-title">Collaboration Hub</div>
+      <div class="section-sub">Your gateway to global research ecosystems, funding & matchmaking</div>
+      <div class="hub-wrapper">
+        <div class="hub-features">
+          <div class="hub-item">
+            <i class="fas fa-database"></i>
+            <h4>Funding opportunities</h4>
+            <p>Curated database of grants, fellowships, and calls.</p>
+          </div>
+          <div class="hub-item">
+            <i class="fas fa-id-card"></i>
+            <h4>Researcher & Expert Profiles</h4>
+            <p>Showcase your expertise, discover global peers.</p>
+          </div>
+          <div class="hub-item">
+            <i class="fas fa-chalkboard-user"></i>
+            <h4>Academia–Industry Matchmaking</h4>
+            <p>Smart pairing for collaborative R&D projects.</p>
+          </div>
+        </div>
+        <div class="hub-cta-card">
+          <i class="fas fa-globe-americas" style="font-size: 2.8rem; color:#2c7da0; margin-bottom: 18px;"></i>
+          <h3>Build Global Connections</h3>
+          <p style="margin: 16px 0 24px;">Join a thriving community of innovators and funders to accelerate breakthroughs.</p>
+          <a href="#" class="btn-primary" style="background:#0f5b7a;">Join Now – Build Global Connections</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources -->
+  <section id="resources">
+    <div class="container">
+      <div class="section-title">Featured Resources</div>
+      <div class="section-sub">Latest guides, templates, and science insights to power your research journey</div>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <h3><i class="fas fa-book"></i> Latest Research Guides</h3>
+          <ul class="resource-list">
+            <li>📘 Grant Writing Mastery (2025 edition)</li>
+            <li>📘 Publishing Strategies for high-impact journals</li>
+            <li>🤖 AI in Research: Ethics & Applications</li>
+          </ul>
+        </div>
+        <div class="resource-card">
+          <h3><i class="fas fa-toolbox"></i> Free Templates & Tools</h3>
+          <ul class="resource-list">
+            <li>📄 Manuscript Checklist (downloadable)</li>
+            <li>📄 Funding Proposal Outline (Word/LaTeX)</li>
+            <li>📊 Data Visualization samples & toolkit</li>
+          </ul>
+        </div>
+        <div class="resource-card">
+          <h3><i class="fas fa-newspaper"></i> Science Insights & Trends</h3>
+          <ul class="resource-list">
+            <li>🧬 Open Access & transformative agreements</li>
+            <li>📈 Research Impact Metrics redefined</li>
+            <li>💡 SciComm for wider audiences</li>
+          </ul>
+          <div><i class="far fa-calendar-alt"></i> Weekly digest — subscribe free</div>
+        </div>
+      </div>
+      <div class="see-all" style="margin-top: 44px;"><a href="#" class="btn-primary">Access Full Resource Library →</a></div>
+    </div>
+  </section>
+
+  <!-- About Us + Dr. Rashid Ahmed, mission vision -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">About ResearchNavigator</div>
+      <div class="section-sub">Led by experience, built for impact</div>
+      <div style="max-width: 1000px; margin:0 auto; background:#fff; border-radius: 40px; padding: 40px; box-shadow: 0 6px 18px rgba(0,0,0,0.02); border:1px solid #eef2f8;">
+        <p style="font-size:1.05rem; margin-bottom: 28px;"><strong>Dr. Rashid Ahmed</strong> — 40+ publications, 10+ competitive grants, visiting research scholar, assistant professor, and biomedical writer. Dr. Ahmed brings decades of cross-disciplinary insight, helping researchers and institutions navigate complex funding landscapes, publish with confidence, and build sustainable collaborations.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 20px;">
+          <div style="flex:1;">
+            <h3 style="color:#2c7da0; margin-bottom: 12px;"><i class="fas fa-bullseye"></i> Mission</h3>
+            <p>To empower researchers, journals, and industry with expert-driven services and global collaboration, removing barriers to impactful science and innovation.</p>
+          </div>
+          <div style="flex:1;">
+            <h3 style="color:#2c7da0; margin-bottom: 12px;"><i class="fas fa-eye"></i> Vision</h3>
+            <p>A world where research and innovation seamlessly connect to solve grand challenges — across disciplines and borders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Success Stories -->
+  <section style="background: #fefefc;">
+    <div class="container">
+      <div class="section-title">Success Stories</div>
+      <div class="section-sub">What our community says about ResearchNavigator</div>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <i class="fas fa-quote-left" style="font-size: 2rem; color:#2c7da0; opacity:0.35; margin-bottom: 12px; display: block;"></i>
+          <p>“ResearchNavigator helped us secure a major grant in biotechnology. Their strategic input and editing were instrumental.”</p>
+          <div style="margin-top: 20px;"><strong>— Dr. Elena V.</strong>, Principal Investigator, BioTech Labs</div>
+        </div>
+        <div class="testimonial">
+          <i class="fas fa-quote-left" style="font-size: 2rem; color:#2c7da0; opacity:0.35; margin-bottom: 12px; display: block;"></i>
+          <p>“Their editing services ensured acceptance in a high-impact journal. Flawless and professional — the best decision we made.”</p>
+          <div style="margin-top: 20px;"><strong>— Prof. James K.</strong>, Editor, Nanoscale Reviews</div>
+        </div>
+        <div class="testimonial">
+          <i class="fas fa-quote-left" style="font-size: 2rem; color:#2c7da0; opacity:0.35; margin-bottom: 12px; display: block;"></i>
+          <p>“The Collaboration Hub connected us with industry partners we never imagined. A true game-changer for translational research.”</p>
+          <div style="margin-top: 20px;"><strong>— Dr. Amina R.</strong>, University Innovation Lead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section + quick inquiry -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">Get in touch</div>
+      <div class="section-sub">Let’s discuss your next research breakthrough or collaboration</div>
+      <div class="contact-panel">
+        <div class="contact-form">
+          <form id="inquiryForm" action="#" method="post">
+            <input type="text" placeholder="Full name *" required>
+            <input type="email" placeholder="Email address *" required>
+            <input type="text" placeholder="Affiliation / Institution">
+            <textarea rows="4" placeholder="Your message or inquiry..." required></textarea>
+            <button type="submit" class="btn-primary" style="border:none; width:100%; cursor:pointer;">Send Inquiry →</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div style="margin-bottom: 28px;">
+            <p style="margin-bottom: 12px;"><i class="fas fa-envelope"></i> hello@researchnavigator.net</p>
+            <p><i class="fas fa-phone-alt"></i> +1 (555) 324-7890</p>
+          </div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-researchgate"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div style="margin-top: 36px; background:#eef4fa; padding: 18px 20px; border-radius: 28px;">
+            <i class="fas fa-clock"></i> Response within 24h | Free initial consultation for early-career researchers
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#resources">Resources</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="disclaimer">
+      ResearchNavigator.net provides professional research support and consulting. We do not guarantee journal acceptance or funding approval. All services are delivered with integrity and expertise.
+    </div>
+    <div style="text-align: center; margin-top: 32px; font-size: 0.8rem;">
+      © 2025 ResearchNavigator.net – Guiding Discovery, Empowering Innovation. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Simple form handling for demo
+  const form = document.getElementById('inquiryForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! Dr. Rashid\'s team will respond shortly. (Demo submission)');
+      form.reset();
+    });
+  }
+  // Smooth anchor highlight (optional)
+  document.querySelectorAll('.nav-menu a, .hero-buttons a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      if (hash && hash.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
